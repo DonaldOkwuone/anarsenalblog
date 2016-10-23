@@ -15,11 +15,11 @@ Route::get('/', 'BlogController@index');
 
 
 
-Route::group(['middleware' => ['web']], function(){
+Route::group(['middleware' => ['auth']], function(){
 	Route::resource('blog', 'BlogController');
 });
 
-Route::group(['middleware' => ['web']], function(){
+Route::group(['middleware' => ['auth']], function(){
 	Route::resource('admin', 'AdminController');
 });
 

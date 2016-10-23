@@ -10,6 +10,11 @@ use App\Post;
 
 use App\Category;
 
+use Redirect;
+
+use Session;
+
+
 class AdminController extends Controller
 {
     /**
@@ -31,6 +36,7 @@ class AdminController extends Controller
     public function create()
     {
 		$categories  = Category::all();
+		
         return view('admin.add_post')->with('categories', $categories);
     }
 
@@ -75,6 +81,9 @@ class AdminController extends Controller
 		}
 		$post->image = $complete_name;
 		$post->save();
+		
+		Session::flash('message', 'Post added');
+		return Redirect::back();
 		
 		
 		
@@ -162,6 +171,7 @@ class AdminController extends Controller
 		
 		$post->save();
 		$request->session()->flash('message', 'Task was successful!');
+		
 		return redirect('admin')->with('message', 'Post has been updated');
 		
     }

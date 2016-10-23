@@ -1,9 +1,15 @@
  @extends('admin.admin')
  @section('content')
  <h1 class="page-header">Dashboard</h1>
-{{ Session::get('message') }}
-          
-
+@if(Session::has('message'))
+		<div class="alert alert-danger">
+			<ul>
+				 
+					<li>{{Session::get('message')}}</li>
+				 
+			</ul>
+		</div>
+	@endif
           <h2 class="sub-header">Blog Posts </h2>
           <div class="table-responsive">
             <table class="table table-striped">

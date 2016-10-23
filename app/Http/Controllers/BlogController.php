@@ -21,7 +21,10 @@ class BlogController extends Controller
     public function index()
     {
         $posts = Post::orderBy('id', 'DESC')->take(10)->get();
-		return view('blog.index', ['posts' => $posts]);
+		
+		$most_read = Post::orderBy('hits', 'Desc')->take(3)->get();
+		
+		return view('blog.index', ['posts' => $posts, 'most_read' => $most_read]);
     }
 
     /**

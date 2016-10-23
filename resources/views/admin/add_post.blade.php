@@ -1,18 +1,19 @@
-@extends('blog.admin')
+@extends('admin.admin')
 @section('content')
-	@if (count($errors) > 0)
+
+	@if(Session::has('message'))
 		<div class="alert alert-danger">
 			<ul>
-				@foreach ($errors->all() as $error)
-					<li><?php echo $errors;  ?></li>
-				@endforeach
+				 
+					<li>{{Session::get('message')}}</li>
+					
 			</ul>
 		</div>
 	@endif
 	
 	
 	<?php
-	 
+		var_dump(Session::get('message')); 
 		echo Form::open(array('url' => '/admin/','files'=>'true'));
 	?>
 	<input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">

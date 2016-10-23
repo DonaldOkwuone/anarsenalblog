@@ -12,8 +12,7 @@
 					<div class="about-two">
 						<a href="single.html"><img src="images/c-1.jpg" alt="" /></a>
 						<p>Posted by <a href="#">{{$posts[0]->author}}</a> on {{$posts[0]->added_on}} <a href="#">comments(2)</a></p>
-						<p>Phasellus fringilla enim nibh, ac pharetra nulla vestibulum ac. Donec tempor fermentum felis, non placerat sem ultrices ut. Nam molestie nunc nec felis hendrerit, in pulvinar arcu mollis. Quisque eget purus nec velit venenatis tincidunt vitae ac massa. Proin vel ornare tellus. Duis consectetur gravida tellus ut varius. Aenean tellus massa, laoreet ut euismod et, pretium id ex. Mauris hendrerit suscipit hendrerit.</p>
-						<p>Quisque ultrices ligula a nisl porttitor, vitae porta tortor eleifend. Nulla nec imperdiet ipsum, ut cursus mauris. Proin ut sodales sem, quis vestibulum libero. Proin tempor venenatis congue. Phasellus mollis massa sit amet pharetra consequat. Aliquam quis lacus at sapien tempor semper. Sed ultrices et metus et elementum. Nunc sed justo at erat consequat mollis et eu lectus.</p>
+						<p> {{$posts[0]->body}}</p>
 						<div class="about-btn">
 							<a href="/blog/<?php echo $posts[0]->id; ?>">Read More</a>
 						</div>
@@ -34,8 +33,14 @@
 									<div class="col-md-6 abt-left">
 										<a href="single.html"><img src="images/c-3.jpg" alt="" /></a>
 										<h6> Arsenal Break</h6>
-										<h3><a href="/blog/<?php echo $post->id; ?>">{{$post->title}}</a></h3>
-										<p>Vivamus interdum diam diam, non faucibus tortor consequat vitae. Proin sit amet augue sed massa pellentesque viverra. Suspendisse iaculis purus eget est pretium aliquam ut sed diam.</p>
+										
+										<?php $new_title = substr($post->title , 0, 20); ?>
+										<?php $new_title = $new_title." ..."; ?>
+										
+										<h3><a href="/blog/<?php echo $post->id; ?>">{{$new_title}}</a></h3>
+										<?php $new_str = substr($post->body , 0, 50); ?>
+										<?php $new_str = $new_str." ..."; ?>
+										<p>{{$new_str}}</p>
 										<label>{{$post->added_on}}</label>
 									</div>
 								@endforeach
@@ -54,42 +59,27 @@
 							<img src="images/c-2.jpg" alt="" />
 							<p>Quisque non tellus vitae mauris luctus aliquam sit amet id velit. Mauris ut dapibus nulla, a dictum neque.</p>
 							<div class="a-btn">
-								<a href="about.html">Read More</a>
+								<a href="{{url('/about-us')}}">Read More</a>
 							</div>
 						</div>
 					</div>
 					<div class="abt-2">
 						<h3>Most Read</h3>
+						@foreach($most_read as $post)
 							<div class="might-grid">
 								<div class="grid-might">
-									<a href="single.html"><img src="images/c-12.jpg" class="img-responsive" alt=""> </a>
+									<a href=" {{url('/blog/'.$post->id)}} "><img src="images/c-12.jpg" class="img-responsive" alt=""> </a>
 								</div>
 								<div class="might-top">
-									<h4><a href="single.html">Duis consectetur gravida</a></h4>
-									<p>Nullam non magna lobortis, faucibus erat eu, consequat justo. Suspendisse commodo nibh odio.</p> 
-								</div>
-								<div class="clearfix"></div>
-							</div>	
-							<div class="might-grid">
-								<div class="grid-might">
-									<a href="single.html"><img src="images/c-10.jpg" class="img-responsive" alt=""> </a>
-								</div>
-								<div class="might-top">
-									<h4><a href="single.html">Duis consectetur gravida</a></h4>
-									<p> Nullam non magna lobortis, faucibus erat eu, consequat justo. Suspendisse commodo nibh odio.</p> 
+									<h4><a href="{{url('/blog/'.$post->id)}}"> {{$post->title}} </a></h4>
+									<?php @$new_str = substr($post->body , 0, 50); ?>
+									<?php @$new_str = $new_str." ..."; ?>
+									<p> {{$new_str}} </p> 
 								</div>
 								<div class="clearfix"></div>
 							</div>
-							<div class="might-grid">
-								<div class="grid-might">
-									<a href="single.html"><img src="images/c-11.jpg" class="img-responsive" alt=""> </a>
-								</div>
-								<div class="might-top">
-									<h4><a href="single.html">Duis consectetur gravida</a></h4>
-									<p> Nullam non magna lobortis, faucibus erat eu, consequat justo. Suspendisse commodo nibh odio.</p> 
-								</div>
-								<div class="clearfix"></div>
-							</div>							
+						@endforeach
+							 							
 					</div>
 					<div class="abt-2">
 						<h3>ARCHIVES</h3>
