@@ -11,6 +11,30 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', 'BlogController@index');
+
+
+
+Route::group(['middleware' => ['web']], function(){
+	Route::resource('blog', 'BlogController');
 });
+
+Route::group(['middleware' => ['web']], function(){
+	Route::resource('admin', 'AdminController');
+});
+
+
+Route::get('/login', function () {
+    return view('admin.login');
+});
+
+Route::get('/contact-us', function () {
+    return view('contact');
+});
+
+Route::get('/about-us', function () {
+    return view('about');
+});
+
+ 
+

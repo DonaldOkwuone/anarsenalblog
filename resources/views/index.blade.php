@@ -5,7 +5,7 @@
 			<div class="about-main">
 				<div class="col-md-8 about-left">
 					<div class="about-one">
-						<p>Find The Most</p>
+						<p>Lead Find The Most</p>
 						<h3>Coffee of the month</h3>
 					</div>
 					<div class="about-two">
@@ -29,7 +29,7 @@
 						<div class="a-1">
 							<div class="col-md-6 abt-left">
 								<a href="single.html"><img src="images/c-3.jpg" alt="" /></a>
-								<h6>Find The Most</h6>
+								<h6>All blog Find The Most</h6>
 								<h3><a href="single.html">Tasty Coffee</a></h3>
 								<p>Vivamus interdum diam diam, non faucibus tortor consequat vitae. Proin sit amet augue sed massa pellentesque viverra. Suspendisse iaculis purus eget est pretium aliquam ut sed diam.</p>
 								<label>May 29, 2015</label>
